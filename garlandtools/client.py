@@ -51,18 +51,3 @@ class Client:
                 return await response.json()
             else:
                 raise Exception(f"Received status code {response.status} from {url}")
-
-
-async def f():
-    client = Client()
-    result = await client.search("Cotton Boll", Type.ITEM, exact=True)
-    for r in result:
-        print(
-            f"id: {r.id}, name: {r.name}, ilvl: {r.ilvl}, icon: {r.icon}, category: {r.category}, price: {r.price}"
-        )
-
-
-if __name__ == "__main__":
-    import asyncio
-
-    asyncio.run(f())
