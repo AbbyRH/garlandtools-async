@@ -9,3 +9,6 @@ https://www.cyanclay.xyz/info/garland-tools-api-doc-en/
 - Inteligent model system that will check the "partials" of an existing result before polling the API if the data requested is not present
 - Caching layer using `cachetools` to reduce the number of queries made to the API
 - Optional support for a redis cache to allow for more persistent caching
+
+# Contributions welcome
+PR's and issues welcome

@@ -1,0 +1,10 @@
+{
+    "autoDocstring.docstringFormat": "sphinx-notypes",
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}
