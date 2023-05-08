@@ -1,3 +1,3 @@
-from garlandtools.client import Client, f
+from garlandtools.client import Client
 
-__all__ = ("Client", "f")
+__all__ = ("Client",)

@@ -1,6 +1,7 @@
 from typing import Any, Dict, List, Optional
 
 from aiohttp import ClientSession
+
 from garlandtools.models import Lang, Type
 
 
@@ -31,7 +32,7 @@ class Client:
         if type is not None:
             params["type"] = type.value
         if exact:
-            params["exact"] = 1
+            params["exact"] = "true"
         result = await self._get("search.php", params=params)
 
         return result

@@ -1,4 +1,3 @@
-# Enum with the following options: achievement, action, browse, fate, fishing, item, leve, map, mob, node, npc, quest, status, venture
 from enum import Enum
 
 

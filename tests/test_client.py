@@ -1,9 +1,11 @@
+import asyncio
 from typing import Dict
+
+import pytest
+
 from garlandtools import Client
 from garlandtools.models.partials.item_partial import ItemPartial
 from garlandtools.models.type import Type
-import asyncio
-import pytest
 
 
 @pytest.fixture()
@@ -28,4 +30,3 @@ def test_search(client: Client):
     assert item.icon == 21652
     assert item.category == 51
     assert item.price == 10
-
