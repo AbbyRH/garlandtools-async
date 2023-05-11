@@ -31,9 +31,7 @@ jobs:
         python-version: '3.11'
         cache: 'poetry'
     - name: Install dependencies
-      run: poetry install --without=dev
-    - name: Build package
-      run: python -m build
+      run: poetry build
       # should really split this into 2 seperate jobs and use artifacts
     - name: Publish package
       uses: pypa/gh-action-pypi-publish@release/v1
