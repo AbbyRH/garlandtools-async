@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "garlandtools-py"
+name = "garlandtools-async"
 version = "0.1.0"
 description = "A async python wrapper for the https://garlandtools.org/ API"
 authors = ["Abigail Howe <abby@abigailhowe.org>"]
