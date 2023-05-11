@@ -28,6 +28,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'poetry'
+    - run: poetry env use ${{ matrix.python-version }}
     - run: poetry install
     - run: poetry run pre-commit run --all-files
     - name: Test with pytest
