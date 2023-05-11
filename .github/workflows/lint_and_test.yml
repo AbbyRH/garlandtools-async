@@ -13,18 +13,20 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
+  lint-and-test:
+    name: Lint and Test
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: [3.11, 3.10, 3.9, 3.8, 3.7, 3.6]
     steps:
     - uses: actions/checkout@v3
     - name: Install poetry
       run: pipx install poetry
     - uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
-        cache: 'poetry'
+        python-version: ${{ matrix.python-version }}
+        cache: 'poetry-${{ matrix.python-version }}'
     - run: poetry install
     - run: poetry run pre-commit run --all-files
     - name: Test with pytest
