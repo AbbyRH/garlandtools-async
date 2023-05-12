@@ -25,6 +25,9 @@
 			]
 		}
 	},
+	"postCreateCommand": {
+		"pre-commit": "pre-commit install-hooks"
+	},
 	"postAttachCommand": {
 		"poetry": "poetry install"
 	}
