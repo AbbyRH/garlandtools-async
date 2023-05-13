@@ -66,3 +66,6 @@ class BaseRecord(ABC):
                 for partial in record_data["partials"]
             ]
             return self._data[key]
+
+    def __repr__(self) -> str:
+        return f"<{self.__class__.__name__} {self.id=}, {self.name=}>"
