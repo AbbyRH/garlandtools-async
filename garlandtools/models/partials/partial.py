@@ -1,6 +1,6 @@
 class Partial:
-    def __init__(self, data):
-        self.data = data["obj"]
+    def __init__(self, data: dict):
+        self.data = data
 
     @property
     def id(self) -> int:

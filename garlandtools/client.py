@@ -1,15 +1,23 @@
-from typing import Any, Dict, List, Optional
+from typing import Any
 
 from aiohttp import ClientSession
 
-from garlandtools.models import Lang, Type
+from garlandtools.models.lang import Lang
+from garlandtools.models.records.base_record import BaseRecord
+from garlandtools.models.records.factory import partial_factory, record_factory
+from garlandtools.models.type import Type
 
 
 class Client:
     base_url = "https://garlandtools.org/api/"
 
-    def __init__(self, session: Optional[ClientSession] = None):
+    def __init__(
+        self,
+        session: ClientSession | None = None,
+        lang: Lang = Lang.EN,
+    ):
         self._session = session
+        self.lang = lang
 
     @property
     def session(self) -> ClientSession:
@@ -18,8 +26,8 @@ class Client:
         return self._session
 
     async def search(
-        self, query: str, type: Optional[Type], exact: Optional[bool] = False
-    ) -> List[Dict]:
+        self, query: str, type: Type | None = None, exact: bool = False
+    ) -> list[BaseRecord]:
         """Search Garland Tools for the given query.
 
         Filters are not yet implemented.
@@ -35,17 +43,28 @@ class Client:
             params["exact"] = "true"
         result = await self._get("search.php", params=params)
 
-        return result
+        return [partial_factory(r, client=self) for r in result]
 
-    def get_by_id(self, id: int, type: Type, lang: Lang):
+    async def _get_by_id(self, id: int, type: Type):
+        params = {
+            "id": id,
+            "type": type.value,
+            "lang": self.lang.value,
+            "version": 3 if type == type.LEVE or type == type.ITEM else 2,
+        }
+        return await self._get("get.php", params=params)
+
+    async def get_by_id(self, id: int, type: Type):
         """Get a record by its ID.
 
         :param id: The ID of the record.
         :param type: The type of the record.
         :param lang: The language of the record.
         """
+        result = await self._get_by_id(id, type)
+        return record_factory(type, result, self)
 
-    async def _get(self, path: str, params: Optional[dict] = None) -> Any:
+    async def _get(self, path: str, params: dict | None = None) -> Any:
         url = self.base_url + path
         async with self.session.get(url, params=params) as response:
             if response.status == 200:
