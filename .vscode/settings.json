@@ -1,4 +1,5 @@
 {
+    "explorer.excludeGitIgnore": true,
     "autoDocstring.docstringFormat": "sphinx-notypes",
     "python.linting.flake8Enabled": true,
     "python.formatting.provider": "black",
@@ -8,6 +9,15 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "[python]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "flake8.severity": {
+        "E": "Error",
+        "F": "Error",
+        "I": "Information",
+        "W": "Warning",
+        "E501": "Warning",
+        "F401": "Information",
     }
 }
