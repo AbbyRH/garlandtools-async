@@ -11,39 +11,39 @@ class Item(BaseRecord):
     @property
     def ilvl(self) -> int:
         """The item level of the item."""
-        if self.data is not None:
-            return self.data["ilvl"]
-        if self.partial is not None:
-            return self.partial.ilvl
+        if self._data is not None:
+            return self._data["ilvl"]
+        if self._partial is not None:
+            return self._partial.ilvl
         raise ValueError("Neither data nor partial is set.")
 
     @property
     def icon(self) -> str:
         """The icon of the item."""
-        if self.data is not None:
-            return self.data["icon"]
-        if self.partial is not None:
-            return self.partial.icon
+        if self._data is not None:
+            return self._data["icon"]
+        if self._partial is not None:
+            return self._partial.icon
         raise ValueError("Neither data nor partial is set.")
 
     @property
     def category(self) -> int:
         """The category of the item."""
-        if self.data is not None:
-            return self.data["category"]
-        if self.partial is not None:
-            return self.partial.category
+        if self._data is not None:
+            return self._data["category"]
+        if self._partial is not None:
+            return self._partial.category
         raise ValueError("Neither data nor partial is set.")
 
     @property
     def price(self) -> int:
         """The price of the item."""
-        if self.data is not None:
-            if "price" not in self.data:
+        if self._data is not None:
+            if "price" not in self._data:
                 return 0
-            return self.data["price"]
-        if self.partial is not None:
-            return self.partial.price
+            return self._data["price"]
+        if self._partial is not None:
+            return self._partial.price
         raise ValueError("Neither data nor partial is set.")
 
     @property

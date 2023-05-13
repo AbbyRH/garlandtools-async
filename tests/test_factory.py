@@ -80,11 +80,11 @@ def test_record_factory_item(client: Client, record_data_item, partial_data):
     assert result.ilvl == record_data_item["item"]["ilvl"]
     assert result.category == record_data_item["item"]["category"]
     assert result.price == record_data_item["item"]["price"]
-    assert len(result.related_records) == 1
-    assert isinstance(result.related_records[0], Item)
-    assert result.related_records[0].id == partial_data["obj"]["i"]
-    assert result.related_records[0].name == partial_data["obj"]["n"]
-    assert result.related_records[0].icon == partial_data["obj"]["c"]
-    assert result.related_records[0].ilvl == partial_data["obj"]["l"]
-    assert result.related_records[0].category == partial_data["obj"]["t"]
-    assert result.related_records[0].price == partial_data["obj"]["p"]
+    assert len(result._related_records) == 1
+    assert isinstance(result._related_records[0], Item)
+    assert result._related_records[0].id == partial_data["obj"]["i"]
+    assert result._related_records[0].name == partial_data["obj"]["n"]
+    assert result._related_records[0].icon == partial_data["obj"]["c"]
+    assert result._related_records[0].ilvl == partial_data["obj"]["l"]
+    assert result._related_records[0].category == partial_data["obj"]["t"]
+    assert result._related_records[0].price == partial_data["obj"]["p"]
