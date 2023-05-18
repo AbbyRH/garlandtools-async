@@ -59,13 +59,13 @@ class Item(BaseRecord):
     # async def patchCategory(self) -> int:
     #     return self.data["patchCategory"]  # TODO: return a PatchCategory object
 
-    # @property
-    # async def tradeable(self) -> bool:
-    #     return bool(self.data["tradeable"])
+    @property
+    async def tradeable(self) -> bool:
+        return bool(await self._get("tradeable"))
 
-    # @property
-    # async def sell_price(self) -> int:
-    #     return self.data["sell_price"]
+    @property
+    async def sell_price(self) -> int:
+        return int(await self._get("sell_price"))  # type: ignore
 
     # @property
     # async def rarity(self) -> int:
