@@ -33,6 +33,7 @@ repos:
         # This isn't ideal as we may have to include dependancies that are already declared in pyproject.toml
         additional_dependencies:
           - types-PyYAML>=6.0.0
+          - types-cachetools
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v3.3.0
     hooks:
