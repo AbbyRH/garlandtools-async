@@ -1,11 +1,16 @@
 from typing import Any
 
 from aiohttp import ClientSession
+from cachetools import LFUCache
+from shelved_cache import PersistentCache
+from shelved_cache.decorators import cachedasyncmethod
 
 from garlandtools.models.lang import Lang
 from garlandtools.models.records.base_record import BaseRecord
 from garlandtools.models.records.factory import partial_factory, record_factory
 from garlandtools.models.type import Type
+
+persistent_cache = PersistentCache(LFUCache, filename="data-cache", maxsize=50)
 
 
 class Client:
@@ -41,7 +46,7 @@ class Client:
             params["type"] = type.value
         if exact:
             params["exact"] = "true"
-        result = await self._get("search.php", params=params)
+        result = await self._get("search.php", **params)
 
         return [partial_factory(r, client=self) for r in result]
 
@@ -52,7 +57,7 @@ class Client:
             "lang": self.lang.value,
             "version": 3 if type == type.LEVE or type == type.ITEM else 2,
         }
-        return await self._get("get.php", params=params)
+        return await self._get("get.php", **params)
 
     async def get_by_id(self, id: int, type: Type):
         """Get a record by its ID.
@@ -64,7 +69,8 @@ class Client:
         result = await self._get_by_id(id, type)
         return record_factory(type, result, self)
 
-    async def _get(self, path: str, params: dict | None = None) -> Any:
+    @cachedasyncmethod(lambda self: persistent_cache)
+    async def _get(self, path: str, **params: dict) -> Any:
         url = self.base_url + path
         async with self.session.get(url, params=params) as response:
             if response.status == 200:
