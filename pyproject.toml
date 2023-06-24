@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "garlandtools-async"
-version = "0.1.2"
+version = "0.2.0"
 description = "A async python wrapper for the https://garlandtools.org/ API"
 authors = ["Abigail Howe <abby@abigailhowe.org>"]
 license = "MIT"
