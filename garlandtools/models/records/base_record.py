@@ -14,7 +14,7 @@ from garlandtools.models.partials.item_partial import ItemPartial
 class BaseRecord(ABC):
     @property
     @abstractmethod
-    def TYPE(self) -> Type:
+    def type(self) -> Type:
         """The type of the record."""
 
     @property
@@ -59,8 +59,8 @@ class BaseRecord(ABC):
             # fetched the data while we were waiting
             if self._data is not None:
                 return self._data[key]
-            record_data = await self._client._get_by_id(self.id, self.TYPE)
-            self._data = record_data[self.TYPE.value]
+            record_data = await self._client._get_by_id(self.id, self.type)
+            self._data = record_data[self.type.value]
             self._related_records = [
                 partial_factory(partial, client=self._client)
                 for partial in record_data["partials"]

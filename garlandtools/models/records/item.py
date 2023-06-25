@@ -4,7 +4,7 @@ from garlandtools.models.type import Type
 
 class Item(BaseRecord):
     @property
-    def TYPE(self) -> Type:
+    def type(self) -> Type:
         """The type of the record."""
         return Type.ITEM
 
