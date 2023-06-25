@@ -12,26 +12,36 @@ on:
   release:
     types: [published, edited]
 
-permissions:
-  contents: read
-  id-token: write
-
 jobs:
-  deploy:
-
+  build:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Install poetry
-      run: pipx install poetry
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-        cache: 'poetry'
-    - name: Install dependencies
-      run: poetry build
-      # should really split this into 2 seperate jobs and use artifacts
-    - name: Publish package
-      uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+          cache: "poetry"
+      - name: Install dependencies
+        run: poetry build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+  publish:
+    permissions:
+      id-token: write
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@release/v1
