@@ -1,3 +1,17 @@
+## v0.3.0 (2023-07-26)
+
+### Feat
+
+- add cachedasyncmethod decorator to _get
+
+### Fix
+
+- add typing package for cachetools
+
+### Refactor
+
+- correct capitalisation of type property
+
 ## v0.2.0 (2023-06-24)
 
 ### Feat
