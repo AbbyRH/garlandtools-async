@@ -14,7 +14,7 @@ cachetools = "^5.3.1"
 shelved-cache = "^0.3.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
+black = ">=23.3,<27.0"
 pytest = "^7.3.1"
 isort = "^5.12.0"
 mypy = "^1.2.0"
