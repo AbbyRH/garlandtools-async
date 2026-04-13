@@ -19,7 +19,7 @@ pytest = ">=7.3.1,<10.0.0"
 isort = ">=5.12,<9.0"
 mypy = "^1.2.0"
 pre-commit = "^3.3.1"
-flake8 = "^6.0.0"
+flake8 = ">=6,<8"
 commitizen = "^3.3.0"
 
 [tool.isort]
