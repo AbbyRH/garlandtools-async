@@ -977,14 +977,14 @@ testing = ["coverage", "pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
-version = "3.5.0"
+version = "4.5.1"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "pre_commit-3.5.0-py2.py3-none-any.whl", hash = "sha256:841dc9aef25daba9a0238cd27984041fa0467b4199fc4852e27950664919f660"},
-    {file = "pre_commit-3.5.0.tar.gz", hash = "sha256:5804465c675b659b0862f07907f96295d490822a450c4c40e747d0b1c6ebcb32"},
+    {file = "pre_commit-4.5.1-py2.py3-none-any.whl", hash = "sha256:3b3afd891e97337708c1674210f8eba659b52a38ea5f822ff142d10786221f77"},
+    {file = "pre_commit-4.5.1.tar.gz", hash = "sha256:eb545fcff725875197837263e977ea257a402056661f09dae08e4b149b030a61"},
 ]
 
 [package.dependencies]
@@ -1609,4 +1609,4 @@ test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-it
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "7525a40f0cf78d1535da258f243b168fa1603964cd79b1526fb0e13d312753ac"
+content-hash = "5abbfe195e330eff7de0d54578604629c15143f3e24fd0cfaab703158dccb098"
