@@ -1473,18 +1473,18 @@ type = ["importlib_metadata (>=7.0.2) ; python_version < \"3.10\"", "jaraco.deve
 
 [[package]]
 name = "shelved-cache"
-version = "0.3.1"
+version = "0.5.0"
 description = "Persistent cache for Python cachetools."
 optional = false
-python-versions = ">=3.7.0,<4.0.0"
+python-versions = "<4.0.0,>=3.10.0"
 groups = ["main"]
 files = [
-    {file = "shelved_cache-0.3.1-py3-none-any.whl", hash = "sha256:3597da599eae1b9df3237c401654e90377fab29f9873e671096550779733ec61"},
-    {file = "shelved_cache-0.3.1.tar.gz", hash = "sha256:0dc1b74fb158117643fc621bf8c12c1ac96e2637530dcfb11f7a242e023a5831"},
+    {file = "shelved_cache-0.5.0-py3-none-any.whl", hash = "sha256:aa474cacc28f5891d4bdafeb95facb23c08c191a8df7daf6db5d2401bc604448"},
+    {file = "shelved_cache-0.5.0.tar.gz", hash = "sha256:6424ad2b016081f4c979871c90e83d2982ac9c43a10e98102fa77aeea797538c"},
 ]
 
 [package.dependencies]
-cachetools = ">=4.2.2,<6.0.0"
+cachetools = ">=4.2.2,<7.0.0"
 
 [[package]]
 name = "termcolor"
@@ -1735,4 +1735,4 @@ test = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more-it
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "c7880ec705c7e1f972807de7e1ddb0f90ae949b06f4251327a34204c1a1f980e"
+content-hash = "ecd5950f08d48d9b59ab88c72bac624764ee3048068c5b35f51adf3cd4542bb1"
